@@ -3,24 +3,38 @@
 ////////////////////////////////////////////////////////////////////////
 
 class Aluno {
-  
+  Nome
+  Idade
+  Nota
+
+  constructor(nome, idade, nota) {
+    this.Nome = nome
+    this.Idade = idade
+    this.Nota = nota
+  }
 }
 
 // Array
+let arrayAlunos = [];
 
 
 //funções projeto
 
-function CadastrarAluno() {
-  
+function CadastrarAluno(nome, idade, nota, array) {
+  let objetoAluno = new Alouno(nome, idade, nota)
+  if (!array.some(x => x.Nome == nome))
+    array.push(objetoAluno)
+  return objetoAluno
 }
 
-function OrdenarPorNota() {
- 
+function OrdenarPorNota(array) {
+ array.sort((a, b) => a.Nota - b.Nota)
+ return array
 }
 
-function OrdenarPorIdade() {
-
+function OrdenarPorIdade(array) {
+  array.sort((a, b) => b.Idade - a.Idade)
+  return array
 }
 
 function OrdenarPorNome() {

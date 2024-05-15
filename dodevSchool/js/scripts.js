@@ -21,7 +21,7 @@ let arrayAlunos = [];
 //funções projeto
 
 function CadastrarAluno(nome, idade, nota, array) {
-  let objetoAluno = new Alouno(nome, idade, nota)
+  let objetoAluno = new Aluno(nome, idade, nota)
   if (!array.some(x => x.Nome == nome))
     array.push(objetoAluno)
   return objetoAluno
@@ -37,13 +37,126 @@ function OrdenarPorIdade(array) {
   return array
 }
 
-function OrdenarPorNome() {
+function OrdenarPorNome(array) {
+  array.sort((a, b) => {
+    // Converter para maiúsculas para garantir a ordem correta
+    const nomeA = a.Nome.toUpperCase();
+    const nomeB = b.Nome.toUpperCase();
 
+    if (nomeA < nomeB) {
+      return -1;
+    }
+    if (nomeA > nomeB) {
+      return 1;
+    }
+    return 0;
+  });
+  return array
 }
 
-function CalcularMedia(){
+function CalcularMedia(array) {
+  if (array.length === 0) {
+    return 0; // Retorna 0 se o array de alunos estiver vazio
+  }
+  let somaNotas = 0;
 
+  array.forEach((aluno) => {
+    somaNotas += Number(aluno.Nota)
+  })
+
+  const media = somaNotas / array.length;
+  return media;
 }
+
+// OUTRA SOLUÇÃO //
+// class Aluno {
+//   constructor(nome, idade, nota) {
+//     this.Nome = nome;
+//     this.Idade = idade;
+//     this.Nota = nota;
+//   }
+// }
+
+// // Array
+// let arrayAlunos = [];
+
+// // Funções do projeto
+
+// /**
+//  * Cadastra um aluno no array se o nome não estiver duplicado
+//  * @param {string} nome - Nome do aluno
+//  * @param {number} idade - Idade do aluno
+//  * @param {number} nota - Nota do aluno
+//  * @param {Array} array - Array onde o aluno será cadastrado
+//  * @returns {Aluno} - O aluno cadastrado
+//  */
+// function CadastrarAluno(nome, idade, nota, array) {
+//   let objetoAluno = new Aluno(nome, idade, nota);
+//   if (!array.some(x => x.Nome === nome)) {
+//     array.push(objetoAluno);
+//   }
+//   return objetoAluno;
+// }
+
+// /**
+//  * Ordena o array de alunos pela nota em ordem crescente
+//  * @param {Array} array - Array de alunos
+//  * @returns {Array} - Array ordenado
+//  */
+// function OrdenarPorNota(array) {
+//   array.sort((a, b) => a.Nota - b.Nota);
+//   return array;
+// }
+
+// /**
+//  * Ordena o array de alunos pela idade em ordem decrescente
+//  * @param {Array} array - Array de alunos
+//  * @returns {Array} - Array ordenado
+//  */
+// function OrdenarPorIdade(array) {
+//   array.sort((a, b) => b.Idade - a.Idade);
+//   return array;
+// }
+
+// /**
+//  * Ordena o array de alunos pelo nome em ordem alfabética
+//  * @param {Array} array - Array de alunos
+//  * @returns {Array} - Array ordenado
+//  */
+// function OrdenarPorNome(array) {
+//   array.sort((a, b) => {
+//     const nomeA = a.Nome.toUpperCase();
+//     const nomeB = b.Nome.toUpperCase();
+
+//     if (nomeA < nomeB) {
+//       return -1;
+//     }
+//     if (nomeA > nomeB) {
+//       return 1;
+//     }
+//     return 0;
+//   });
+//   return array;
+// }
+
+// /**
+//  * Calcula a média das notas dos alunos
+//  * @param {Array} array - Array de alunos
+//  * @returns {number} - Média das notas
+//  */
+// function CalcularMedia(array) {
+//   if (array.length === 0) {
+//     return 0; // Retorna 0 se o array de alunos estiver vazio
+//   }
+//   let somaNotas = 0;
+
+//   array.forEach((aluno) => {
+//     somaNotas += Number(aluno.Nota);
+//   });
+
+//   const media = somaNotas / array.length;
+//   return media;
+// }
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
